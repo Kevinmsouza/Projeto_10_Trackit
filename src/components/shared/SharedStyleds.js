@@ -24,11 +24,20 @@ const Form = styled.input`
     border-radius: 5px;
     padding: 0 11px;
     margin-bottom: 6px;
+    font-size: 20px;
+    line-height: 25px;
     &::placeholder{
         font-size: 20px;
         line-height: 25px;
         font-family: 'Lexend Deca', sans-serif;
         color: #DBDBDB;
+    }
+    &:hover{
+        filter: brightness(0.95);
+    }
+    &:disabled{
+        background-color: #F2F2F2;
+        color: #AFAFAF;
     }
 `;
 
@@ -39,8 +48,8 @@ const BlueButton = styled.button`
     border-radius: 5px;
     border: none;
     font-size: 21px;
-    &:hover{
-        filter: brightness(0.95);
+    &:disabled{
+        opacity: 0.7;
     }
 `;
 
