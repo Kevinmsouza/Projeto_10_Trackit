@@ -8,10 +8,11 @@ const Page = styled.article`
     flex-direction: column;
     align-items: center;
     background-color: #fff;
+    margin-top: 70px;
 `;
 
 const Logo = styled.div`
-    margin: 68px 0 32px 0;
+    margin: 0 0 32px 0;
     width: 180px;
     height: 178.38px;
     background: url(${logoImg});

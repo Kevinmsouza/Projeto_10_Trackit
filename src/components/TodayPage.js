@@ -1,7 +1,12 @@
+import Header from "./Header";
+import { Page } from "./shared/SharedStyleds";
 
 
 export default function TodayPage() {
     return(
-        <h1>ok</h1>
+        <Page>
+            <Header />
+            
+        </Page>
     )
 }
