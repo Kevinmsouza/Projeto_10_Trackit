@@ -1,7 +1,7 @@
-import { BlueButton, Form, Page, Logo, TextButton } from "../shared/SharedStyleds";
+import { BlueButton, Input, Page, Logo, TextButton } from "./shared/SharedStyleds";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
-import { sendSingupRequest } from "../../services/Trackit";
+import { sendSingupRequest } from "../services/Trackit";
 import Loader from "react-loader-spinner";
 
 export default function SingupPage() {
@@ -42,10 +42,10 @@ export default function SingupPage() {
     return (
         <Page>
             <Logo />
-            <Form placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} disabled={isLoading} />
-            <Form placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)} disabled={isLoading} />
-            <Form placeholder="nome" value={name} onChange={(e) => setName(e.target.value)} disabled={isLoading} />
-            <Form placeholder="foto" value={image} onChange={(e) => setImage(e.target.value)} disabled={isLoading} />
+            <Input placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} disabled={isLoading} />
+            <Input type="password" placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)} disabled={isLoading} />
+            <Input placeholder="nome" value={name} onChange={(e) => setName(e.target.value)} disabled={isLoading} />
+            <Input placeholder="foto" value={image} onChange={(e) => setImage(e.target.value)} disabled={isLoading} />
             <BlueButton isBig={true} onClick={singup} disabled={isLoading} >
                 {!isLoading ? "Cadastrar" : <Loader type="ThreeDots" color="#FFF" height={40} width={80} />}
             </BlueButton>

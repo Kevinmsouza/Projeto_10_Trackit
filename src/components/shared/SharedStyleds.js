@@ -17,7 +17,7 @@ const Logo = styled.div`
     background: url(${logoImg});
 `;
 
-const Form = styled.input`
+const Input = styled.input`
     width: 303px;
     height: 45px;
     border: 1px solid #D5D5D5;
@@ -62,7 +62,7 @@ const TextButton = styled.span`
 export {
     Page,
     Logo,
-    Form,
+    Input,
     BlueButton,
     TextButton
 }
