@@ -6,27 +6,31 @@ import { useState } from "react";
 import UserContext from "./contexts/UserContext";
 import TodayPage from "./components/TodayPage";
 import HabitsPage from "./components/HabitsPage";
+import TodayContext from "./contexts/TodayContext";
 
 export default function App() {
     const [userData, setUserData] = useState("");
+    const [todayData, setTodayData] = useState([])
     return (
-        <UserContext.Provider value={{userData, setUserData}}>
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/" exact>
-                        <LoginPage />
-                    </Route>
-                    <Route path="/cadastro" exact>
-                        <SingupPage />
-                    </Route>
-                    <Route path="/hoje" exact>
-                        <TodayPage />
-                    </Route>
-                    <Route path="/habitos" exact>
-                        <HabitsPage />
-                    </Route>
-                </Switch>
-            </BrowserRouter>
+        <UserContext.Provider value={{ userData, setUserData }}>
+            <TodayContext.Provider value={{ todayData, setTodayData }}>
+                <BrowserRouter>
+                    <Switch>
+                        <Route path="/" exact>
+                            <LoginPage />
+                        </Route>
+                        <Route path="/cadastro" exact>
+                            <SingupPage />
+                        </Route>
+                        <Route path="/hoje" exact>
+                            <TodayPage />
+                        </Route>
+                        <Route path="/habitos" exact>
+                            <HabitsPage />
+                        </Route>
+                    </Switch>
+                </BrowserRouter>
+            </TodayContext.Provider>
         </UserContext.Provider>
     )
 }

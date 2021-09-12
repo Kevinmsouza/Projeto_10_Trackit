@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import styled from "styled-components";
+import TodayContext from "../contexts/TodayContext";
 import UserContext from "../contexts/UserContext";
-import { getTodayTasks } from "../services/Trackit";
+import { getTodayData } from "../services/Trackit";
 import Header from "./Header";
 import Menu from "./Menu";
 import { HabitsBox, HabitsBoxHeader, Page } from "./shared/SharedStyleds";
@@ -10,35 +10,37 @@ import TodoTask from "./TodoTaks";
 
 
 export default function TodayPage() {
-    const {userData} = useContext(UserContext);
-    const [todayTasks, setTodayTasks] = useState([]);
+    const { userData } = useContext(UserContext);
+    const { todayData, setTodayData } = useContext(TodayContext)
     let history = useHistory();
 
-    useEffect(()=>{
+    useEffect(() => {
         const config = {
             headers: {
                 Authorization: `Bearer ${userData.token}`
             }
         }
-        getTodayTasks(config)
-        .then(res => setTodayTasks(res.data))
-        .catch(err => {
-            alert(err);
-            history.push("/")
-        })
+        getTodayData(config)
+            .then(res => {
+                setTodayData(res.data);
+            })
+            .catch(err => {
+                alert(err);
+                history.push("/");
+            })
 
     }, [])
 
-    return(
+    return (
         <Page white={false}>
-            <Header /> 
-                <HabitsBox>
-                    <HabitsBoxHeader>
+            <Header />
+            <HabitsBox>
+                <HabitsBoxHeader>
 
-                    </HabitsBoxHeader>
+                </HabitsBoxHeader>
+                {todayData.map(taskData => <TodoTask taskData={taskData} />)}
+            </HabitsBox>
 
-                </HabitsBox>
-                {todayTasks.map(taskData => <TodoTask taskData={taskData} />)}
             <Menu />
         </Page>
     )

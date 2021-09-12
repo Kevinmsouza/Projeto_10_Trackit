@@ -2,9 +2,17 @@ import styled from "styled-components"
 import { TextButton, mainColor } from "./shared/SharedStyleds";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import TodayContext from "../contexts/TodayContext";
 
 export default function Menu() {
-    const percentage = 30;
+    const {todayData, setTodayData} = useContext(TodayContext);
+
+    function calcPercentage(){
+        const numberOfHabits = todayData.length;
+        const numberOfDones = todayData.filter((habit) => habit.done).length;
+        return ((numberOfDones * 100) / numberOfHabits).toFixed(0);
+    }
     return (
         <Footer>
             <Link to="/habitos">
@@ -13,7 +21,7 @@ export default function Menu() {
             <Link to="/hoje">
                 <TodayButton>
                     <CircularProgressbar
-                        value={percentage}
+                        value={calcPercentage()}
                         background
                         backgroundPadding={6}
                         strokeWidth={10}

@@ -101,6 +101,9 @@ const HabitSC = styled.div`
     border-radius: 5px;
     padding: 0 0 0 15px;
     position:relative;
+    p {
+        font-size: 13px;
+    }
 `;
 
 const HabitsBox = styled.div`
@@ -108,7 +111,7 @@ const HabitsBox = styled.div`
     padding: 0 18px;
     width: 100vw;
     font-size: 18px;
-    p {
+    & > p {
         margin-top: 28px;
     }
 `;

@@ -10,7 +10,7 @@ function sendLoginRequest(body){
     return axios.post(`${BASE_URL}/auth/login`, body);
 }
 
-function getTodayTasks(config){
+function getTodayData(config){
     return axios.get(`${BASE_URL}/habits/today`, config);
 }
 
@@ -29,7 +29,7 @@ function sendDeleteRequest(id, config){
 export {
     sendSingupRequest,
     sendLoginRequest,
-    getTodayTasks,
+    getTodayData,
     getHabitsList,
     createHabit,
     sendDeleteRequest
