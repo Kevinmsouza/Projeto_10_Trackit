@@ -6,7 +6,7 @@ import { useContext } from "react";
 import TodayContext from "../contexts/TodayContext";
 
 export default function Menu() {
-    const {todayData, setTodayData} = useContext(TodayContext);
+    const {todayData} = useContext(TodayContext);
 
     function calcPercentage(){
         const numberOfHabits = todayData.length;
