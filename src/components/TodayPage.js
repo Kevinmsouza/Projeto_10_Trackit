@@ -15,6 +15,10 @@ export default function TodayPage() {
     let history = useHistory();
 
     useEffect(() => {
+        renderAllTodayHabits();
+    }, [])
+
+    function renderAllTodayHabits(){
         const config = {
             headers: {
                 Authorization: `Bearer ${userData.token}`
@@ -28,8 +32,7 @@ export default function TodayPage() {
                 alert(err);
                 history.push("/");
             })
-
-    }, [])
+    }
 
     return (
         <Page white={false}>
@@ -38,7 +41,7 @@ export default function TodayPage() {
                 <HabitsBoxHeader>
 
                 </HabitsBoxHeader>
-                {todayData.map(taskData => <TodoTask taskData={taskData} />)}
+                {todayData.map(taskData => <TodoTask taskData={taskData} renderAllTodayHabits={renderAllTodayHabits} />)}
             </HabitsBox>
 
             <Menu />

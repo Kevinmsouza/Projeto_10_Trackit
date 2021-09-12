@@ -26,11 +26,20 @@ function sendDeleteRequest(id, config){
     return axios.delete(`${BASE_URL}/habits/${id}`, config);
 }
 
+function sendDoneRequest(id, config){
+    return axios.post(`${BASE_URL}/habits/${id}/check`, null, config);
+}
+function sendUndoneRequest(id, config){
+    return axios.post(`${BASE_URL}/habits/${id}/uncheck`, null, config);
+}
+
 export {
     sendSingupRequest,
     sendLoginRequest,
     getTodayData,
     getHabitsList,
     createHabit,
-    sendDeleteRequest
+    sendDeleteRequest,
+    sendDoneRequest,
+    sendUndoneRequest
 };
