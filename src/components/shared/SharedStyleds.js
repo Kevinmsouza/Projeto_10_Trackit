@@ -30,6 +30,7 @@ const Input = styled.input`
     margin-bottom: 6px;
     font-size: 20px;
     line-height: 25px;
+    color: #666666;
     &::placeholder{
         font-size: 20px;
         line-height: 25px;
@@ -43,12 +44,18 @@ const Input = styled.input`
         background-color: #F2F2F2;
         color: #AFAFAF;
     }
+    &:focus{
+        outline: none;
+    }
 `;
 
-const BlueButton = styled.button`
+const LoginButton = styled.button`
+    font-family: 'Lexend Deca', sans-serif;
     background-color: ${mainColor};
     color: #ffffff;
-    ${props => props.isBig ? "width: 303px; height: 45px; margin-bottom: 25px;" : ""}
+    width: 303px;
+    height: 45px;
+    margin-bottom: 25px;
     border-radius: 5px;
     border: none;
     font-size: 21px;
@@ -68,6 +75,6 @@ export {
     Page,
     Logo,
     Input,
-    BlueButton,
+    LoginButton,
     TextButton
 }

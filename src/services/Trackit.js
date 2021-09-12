@@ -14,8 +14,18 @@ function getTodayTasks(config){
     return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config);
 }
 
+function getHabitsList(config){
+    return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config);
+}
+
+function createHabit(body, config){
+    return axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", body, config)
+}
+
 export {
     sendSingupRequest,
     sendLoginRequest,
-    getTodayTasks
+    getTodayTasks,
+    getHabitsList,
+    createHabit
 };

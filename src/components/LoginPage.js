@@ -1,4 +1,4 @@
-import { Page, Logo, Input, BlueButton, TextButton } from "./shared/SharedStyleds";
+import { Page, Logo, Input, LoginButton, TextButton } from "./shared/SharedStyleds";
 import { Link, useHistory } from "react-router-dom";
 import { useContext, useState } from "react";
 import Loader from "react-loader-spinner";
@@ -38,13 +38,12 @@ export default function LoginPage() {
             <Logo />
             <Input placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} disabled={isLoading} />
             <Input type="password" placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)} disabled={isLoading} />
-            <BlueButton isBig={true} onClick={login}> {!isLoading ? "Entrar" : <Loader type="ThreeDots" color="#FFF" height={40} width={80} />} </BlueButton>
+            <LoginButton isBig={true} onClick={login}> {!isLoading ? "Entrar" : <Loader type="ThreeDots" color="#FFF" height={40} width={80} />} </LoginButton>
             <Link to="/cadastro">
                 <TextButton fontsize="14px" underline={true}>
                     Não tem uma conta? Cadastre-se!
                 </TextButton>
             </Link>
-
         </Page>
     )
 }

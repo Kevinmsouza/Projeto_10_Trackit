@@ -1,4 +1,4 @@
-import { BlueButton, Input, Page, Logo, TextButton } from "./shared/SharedStyleds";
+import { LoginButton, Input, Page, Logo, TextButton } from "./shared/SharedStyleds";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import { sendSingupRequest } from "../services/Trackit";
@@ -46,9 +46,9 @@ export default function SingupPage() {
             <Input type="password" placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)} disabled={isLoading} />
             <Input placeholder="nome" value={name} onChange={(e) => setName(e.target.value)} disabled={isLoading} />
             <Input placeholder="foto" value={image} onChange={(e) => setImage(e.target.value)} disabled={isLoading} />
-            <BlueButton isBig={true} onClick={singup} disabled={isLoading} >
+            <LoginButton isBig={true} onClick={singup} disabled={isLoading} >
                 {!isLoading ? "Cadastrar" : <Loader type="ThreeDots" color="#FFF" height={40} width={80} />}
-            </BlueButton>
+            </LoginButton>
             <Link to={!isLoading ? "/" : "/cadastro"} >
                 <TextButton fontsize="14px" underline={true} >
                     Já tem uma conta? Faça login!

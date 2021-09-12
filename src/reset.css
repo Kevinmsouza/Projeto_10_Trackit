@@ -49,4 +49,8 @@ table {
 body{
     font-family: 'Lexend Deca', sans-serif;
     background-color: #fff;
+	color: #666666;
+}
+a{
+	text-decoration: inherit;
 }

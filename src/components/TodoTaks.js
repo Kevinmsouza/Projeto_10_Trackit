@@ -32,7 +32,6 @@ const Task = styled.div`
 `
 
 const TextArea = styled.div`
-    color: #666666;
     h3 {
         font-size: 20px;
     }

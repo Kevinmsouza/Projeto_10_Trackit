@@ -5,6 +5,7 @@ import SingupPage from "./components/SingupPage";
 import { useState } from "react";
 import UserContext from "./contexts/UserContext";
 import TodayPage from "./components/TodayPage";
+import HabitsPage from "./components/HabitsPage";
 
 export default function App() {
     const [userData, setUserData] = useState("");
@@ -20,6 +21,9 @@ export default function App() {
                     </Route>
                     <Route path="/hoje" exact>
                         <TodayPage />
+                    </Route>
+                    <Route path="/habitos" exact>
+                        <HabitsPage />
                     </Route>
                 </Switch>
             </BrowserRouter>
