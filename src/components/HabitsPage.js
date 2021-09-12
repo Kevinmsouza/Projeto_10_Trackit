@@ -7,7 +7,7 @@ import Habit from "./Habit";
 import Header from "./Header";
 import Menu from "./Menu";
 import NewHabit from "./NewHabit";
-import { Page } from "./shared/SharedStyleds";
+import { Page, HabitsBox, HabitsBoxHeader } from "./shared/SharedStyleds";
 
 export default function HabitsPage() {
     const [habits, SetHabits] = useState([]);
@@ -54,25 +54,6 @@ export default function HabitsPage() {
         </Page>
     )
 }
-
-const HabitsBox = styled.div`
-    margin-top: 30px;
-    padding: 0 18px;
-    width: 100vw;
-    font-size: 18px;
-    p {
-        margin-top: 28px;
-    }
-`;
-
-const HabitsBoxHeader = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 23px;
-    color: #126BA5;
-    margin-bottom: 20px;
-`;
 
 const PlusButton = styled.button`
     width: 40px;

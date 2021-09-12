@@ -46,7 +46,7 @@ export default function SingupPage() {
             <Input type="password" placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)} disabled={isLoading} />
             <Input placeholder="nome" value={name} onChange={(e) => setName(e.target.value)} disabled={isLoading} />
             <Input placeholder="foto" value={image} onChange={(e) => setImage(e.target.value)} disabled={isLoading} />
-            <LoginButton isBig={true} onClick={singup} disabled={isLoading} >
+            <LoginButton  onClick={singup} disabled={isLoading} >
                 {!isLoading ? "Cadastrar" : <Loader type="ThreeDots" color="#FFF" height={40} width={80} />}
             </LoginButton>
             <Link to={!isLoading ? "/" : "/cadastro"} >

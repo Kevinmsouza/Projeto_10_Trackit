@@ -1,4 +1,5 @@
-import { HabitSC } from "./shared/SharedStyleds"
+import { HabitSC } from "./shared/SharedStyleds";
+import { Checkbox } from 'react-ionicons';
 
 export default function TodoTask({ taskData }) {
 
@@ -9,7 +10,11 @@ export default function TodoTask({ taskData }) {
                 <p>Sequência atual: {taskData.currentSequence} dias</p>
                 <p>Seu recorde: {taskData.highestSequence} dias</p>
             </div>
-            <ion-icon name="checkbox"></ion-icon>
+            <Checkbox
+                color={'#EBEBEB'}
+                height="90px"
+                width="90px"
+            />
         </HabitSC>
     )
 }

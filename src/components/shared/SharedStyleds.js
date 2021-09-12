@@ -88,7 +88,7 @@ const DayButton = styled.button`
 const HabitTitle = styled.h3`
     font-size: 20px;
     margin-bottom: 8px;
-`
+`;
 
 const HabitSC = styled.div`
     width: 90vw;
@@ -97,17 +97,43 @@ const HabitSC = styled.div`
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-radius: 5px;
-    padding: 15px;
+    padding: 0 0 0 15px;
     position:relative;
-    & ion-icon{
-        font-size: 69px;
-        margin: 13px;
-        color: #8FC549;
+`;
+
+const HabitsBox = styled.div`
+    margin: 30px 0;
+    padding: 0 18px;
+    width: 100vw;
+    font-size: 18px;
+    p {
+        margin-top: 28px;
     }
-    
-    
-`
+`;
+
+const HabitsBoxHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 23px;
+    color: #126BA5;
+    margin-bottom: 20px;
+`;
+const SaveButton = styled.button`
+    font-family: 'Lexend Deca', sans-serif;
+    background-color: ${mainColor};
+    color: #fff;
+    width: 84px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    &:disabled{
+        opacity: 0.7;
+    }  
+`;
 
 export {
     mainColor,
@@ -119,5 +145,8 @@ export {
     WeekdaysBox,
     DayButton,
     HabitTitle,
-    HabitSC
+    HabitSC,
+    HabitsBox,
+    HabitsBoxHeader,
+    SaveButton
 }

@@ -2,10 +2,11 @@ import { useContext, useState } from "react"
 import styled from "styled-components"
 import UserContext from "../contexts/UserContext";
 import { createHabit } from "../services/Trackit";
-import { Input, TextButton, WeekdaysBox, DayButton } from "./shared/SharedStyleds"
-
+import { Input, TextButton, WeekdaysBox, DayButton, SaveButton } from "./shared/SharedStyleds"
+import Loader from "react-loader-spinner";
 
 export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
+    const {userData} = useContext(UserContext);
     const [weekdays, setWeekdays] = useState([
         {
             name: "D",
@@ -38,15 +39,14 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
     ])
     const [habitName, setHabitName] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const {userData} = useContext(UserContext);
-
+    
     function toggleSelect(i) {
         let newList = [...weekdays];
         newList[i].isSelected = !weekdays[i].isSelected;
         setWeekdays(newList);
     }
     function saveHabit(){
-        setIsLoading(true)
+        setIsLoading(true);
         const body = {
             name: habitName,
             days: weekdays.map((day, i) => day.isSelected ? i : -1).filter((index) => index >= 0 )
@@ -61,8 +61,14 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
                 renderAllHabits();
                 setIsNewHabitsVisible(false);
             })
-            .catch(err => alert(err))
-            .finally(setIsLoading(false));
+            .catch(err => {
+                if (err.response.status === 422){
+                    alert("Prencha os campos corretamente!");
+                    return;
+                }
+                alert(err);
+            })
+            .finally(() => setIsLoading(false));
     }
 
     return (
@@ -70,20 +76,27 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
             <Input
                 placeholder="nome do hábito" 
                 value={habitName} 
-                onChange={(e) => setHabitName(e.target.value)} 
+                onChange={(e) => setHabitName(e.target.value)}
+                disabled={isLoading}
             />
             <WeekdaysBox >
                 {weekdays.map((day, i) => (
                     <DayButton
-                        isSelected={day.isSelected} onClick={() => toggleSelect(i)} >
+                        isSelected={day.isSelected}
+                        onClick={() => toggleSelect(i)} 
+                        disabled={isLoading}
+                    >
                         {day.name}
                     </DayButton>
                 ))}
             </WeekdaysBox>
             <ButtonsBox>
-                <TextButton onClick={()=> setIsNewHabitsVisible(false)}>Cancelar</TextButton>
-                <SaveButton onClick={saveHabit}>Salvar</SaveButton>
+                <TextButton onClick={()=> isLoading ? "" : setIsNewHabitsVisible(false)}>Cancelar</TextButton>
+                <SaveButton onClick={saveHabit} disabled={isLoading} >
+                    {isLoading ? <Loader type="ThreeDots" color="#FFF" height={35} width={50} /> : "Salvar"}
+                </SaveButton>
             </ButtonsBox>
+            
         </NewHabitSC>
     )
 }
@@ -103,17 +116,4 @@ const ButtonsBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-`;
-const SaveButton = styled.button`
-    font-family: 'Lexend Deca', sans-serif;
-    background-color: #52B6FF;
-    color: #fff;
-    width: 84px;
-    height: 35px;
-    border-radius: 5px;
-    border: none;
-    font-size: 16px;
-    &:disabled{
-        opacity: 0.7;
-    }
 `;
