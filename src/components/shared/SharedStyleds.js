@@ -70,11 +70,54 @@ const TextButton = styled.span`
     text-decoration: ${props => props.underline ? "underline" : "none"};
 `;
 
+const WeekdaysBox = styled.div`
+    display:flex;
+`;
+
+const DayButton = styled.button`
+    margin-right: 4px;
+    background: ${props => props.isSelected ? "#CFCFCF" : "#FFFFFF"};
+    color: ${props => props.isSelected ? "#FFFFFF" : "#DBDBDB"};
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+`;
+
+const HabitTitle = styled.h3`
+    font-size: 20px;
+    margin-bottom: 8px;
+`
+
+const HabitSC = styled.div`
+    width: 90vw;
+    height: 94px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 15px;
+    position:relative;
+    & ion-icon{
+        font-size: 69px;
+        margin: 13px;
+        color: #8FC549;
+    }
+    
+    
+`
+
 export {
     mainColor,
     Page,
     Logo,
     Input,
     LoginButton,
-    TextButton
+    TextButton,
+    WeekdaysBox,
+    DayButton,
+    HabitTitle,
+    HabitSC
 }

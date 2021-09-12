@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import styled from "styled-components"
 import UserContext from "../contexts/UserContext";
 import { createHabit } from "../services/Trackit";
-import { Input, TextButton } from "./shared/SharedStyleds"
+import { Input, TextButton, WeekdaysBox, DayButton } from "./shared/SharedStyleds"
 
 
 export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
@@ -84,7 +84,6 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
                 <TextButton onClick={()=> setIsNewHabitsVisible(false)}>Cancelar</TextButton>
                 <SaveButton onClick={saveHabit}>Salvar</SaveButton>
             </ButtonsBox>
-            
         </NewHabitSC>
     )
 }
@@ -95,21 +94,6 @@ const NewHabitSC = styled.div`
     height: 180px;
     padding: 18px;
     background-color: #fff;
-`;
-
-const WeekdaysBox = styled.div`
-    display:flex;
-`;
-
-const DayButton = styled.button`
-    margin-right: 4px;
-    background: ${props => props.isSelected ? "#CFCFCF" : "#FFFFFF"};
-    color: ${props => props.isSelected ? "#FFFFFF" : "#DBDBDB"};
-    border: 1px solid #D5D5D5;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
 `;
 
 const ButtonsBox = styled.div`

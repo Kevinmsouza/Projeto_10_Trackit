@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import UserContext from "../contexts/UserContext";
 import { getHabitsList } from "../services/Trackit";
+import Habit from "./Habit";
 import Header from "./Header";
 import Menu from "./Menu";
 import NewHabit from "./NewHabit";
@@ -9,14 +11,15 @@ import { Page } from "./shared/SharedStyleds";
 
 export default function HabitsPage() {
     const [habits, SetHabits] = useState([]);
-    const {userData} = useContext(UserContext);
-    const [isNewHabitsVisible, setIsNewHabitsVisible ] = useState(false);
+    const { userData } = useContext(UserContext);
+    const [isNewHabitsVisible, setIsNewHabitsVisible] = useState(false);
+    let history = useHistory();
 
     useEffect(() => {
         renderAllHabits();
     }, [])
-    
-    function renderAllHabits(){
+
+    function renderAllHabits() {
         const config = {
             headers: {
                 Authorization: `Bearer ${userData.token}`
@@ -24,9 +27,11 @@ export default function HabitsPage() {
         }
         getHabitsList(config)
             .then(res => SetHabits(res.data))
-            .catch(err => alert(err))
+            .catch(err => {
+                alert(err);
+                history.push("/");
+            })
     }
-    console.log(habits)
     return (
         <Page>
             <Header />
@@ -38,12 +43,12 @@ export default function HabitsPage() {
                 {isNewHabitsVisible ? (<NewHabit
                     renderAllHabits={renderAllHabits}
                     setIsNewHabitsVisible={setIsNewHabitsVisible}
-                    />) : ""}
-                {habits.length === 0 ?(<p>
-                        Você não tem nenhum hábito cadastrado ainda.
-                        Adicione um hábito para começar a trackear!
-                    </p>) : <p>Em andamento</p>}
-                
+                />) : ""}
+                {habits.length === 0 ? (<p>
+                    Você não tem nenhum hábito cadastrado ainda.
+                    Adicione um hábito para começar a trackear!
+                </p>) : habits.map((habitData) => <Habit habitData={habitData} renderAllHabits={renderAllHabits}/>)}
+
             </HabitsBox>
             <Menu />
         </Page>
@@ -66,6 +71,7 @@ const HabitsBoxHeader = styled.div`
     align-items: center;
     font-size: 23px;
     color: #126BA5;
+    margin-bottom: 20px;
 `;
 
 const PlusButton = styled.button`
