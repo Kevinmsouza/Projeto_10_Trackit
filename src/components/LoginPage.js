@@ -28,14 +28,13 @@ export default function LoginPage() {
                     alert("Dados Invalidos");
                     return;
                 }
-                alert(err)
+                alert(err);
             })
-            .finally(() => setIsLoading(false))
-        
+            .finally(() => setIsLoading(false));
     }
 
     return (
-        <Page>
+        <Page white>
             <Logo />
             <Input placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} disabled={isLoading} />
             <Input type="password" placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)} disabled={isLoading} />

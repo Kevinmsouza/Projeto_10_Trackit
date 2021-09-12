@@ -4,11 +4,14 @@ import logoImg from "../../assets/img/Logo.svg";
 const mainColor= "#52B6FF"
 
 const Page = styled.article`
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
-    margin-top: 70px;
+    background-color: ${props => props.white? "#ffffff": "#f2f2f2"};
+    padding: 70px 0;
+    overflow-y: scroll;
 `;
 
 const Logo = styled.div`
@@ -61,6 +64,7 @@ const TextButton = styled.span`
 `;
 
 export {
+    mainColor,
     Page,
     Logo,
     Input,
