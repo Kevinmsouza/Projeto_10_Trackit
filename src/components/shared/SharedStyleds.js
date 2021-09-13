@@ -141,6 +141,9 @@ const SaveButton = styled.button`
 const GreenTxt = styled.span`
     color: ${props => props.isGreen ? "#8FC549" : "inherit"};
 `
+const Form = styled.form`
+    width: 303px;
+`
 
 export {
     mainColor,
@@ -156,5 +159,6 @@ export {
     HabitsBox,
     HabitsBoxHeader,
     SaveButton,
-    GreenTxt
+    GreenTxt,
+    Form
 }
