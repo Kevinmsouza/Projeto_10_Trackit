@@ -1,6 +1,5 @@
-import { HabitSC, HabitTitle } from "./shared/SharedStyleds";
+import { HabitSC, HabitTitle, GreenTxt } from "./shared/SharedStyleds";
 import { Checkbox } from 'react-ionicons';
-import styled from "styled-components";
 import { useContext, useState } from "react";
 import UserContext from "../contexts/UserContext";
 import { sendDoneRequest, sendUndoneRequest } from "../services/Trackit";
@@ -54,6 +53,3 @@ export default function TodoTask({ taskData: { id, name, currentSequence, highes
     )
 }
 
-const GreenTxt = styled.span`
-    color: ${props => props.isGreen ? "#8FC549" : "inherit"};
-`

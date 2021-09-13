@@ -28,7 +28,10 @@ export default function Menu() {
                         styles={buildStyles({
                             backgroundColor: mainColor,
                             textColor: "#fff",
-                            pathColor: "#fff"
+                            pathColor: "#fff",
+                            pathTransitionDuration: 0.5,
+                            strokeLinecap: 'round',
+
                         })}
                     />
                     <Innertxt>Hoje</Innertxt>
