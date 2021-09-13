@@ -72,7 +72,7 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
             })
             .catch(err => {
                 if (err.response.status === 422){
-                    alert("Prencha os campos corretamente!");
+                    alert("Dê nome à seu novo Habito!");
                     return;
                 }
                 alert(err);
