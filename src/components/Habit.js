@@ -3,10 +3,12 @@ import { TrashOutline } from 'react-ionicons'
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import { sendDeleteRequest } from "../services/Trackit";
+import TodayContext from "../contexts/TodayContext";
 
 export default function Habit({ habitData: { id, name, days }, renderAllHabits }) {
     const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
     const {userData} = useContext(UserContext);
+    const {todayData, setTodayData} = useContext(TodayContext);
 
     function deleteHabit(){
         const config = {
@@ -15,7 +17,10 @@ export default function Habit({ habitData: { id, name, days }, renderAllHabits }
             }
         }
         sendDeleteRequest(id, config)
-            .then(res => renderAllHabits())
+            .then(res => {
+                setTodayData(todayData.filter((habit) => habit.id !== id))
+                renderAllHabits();
+            })
             .catch(err => alert(err))
     }
     return (
