@@ -50,6 +50,7 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
     }
     function saveHabit(){
         if (weekdays.map((day, i) => day.isSelected ? i : -1).filter((index) => index >= 0 ).length === 0) {
+            alert("Selecione os dias do habito!")
             return;
         }
         setIsLoading(true);
