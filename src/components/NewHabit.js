@@ -4,9 +4,12 @@ import UserContext from "../contexts/UserContext";
 import { createHabit } from "../services/Trackit";
 import { Input, TextButton, WeekdaysBox, DayButton, SaveButton } from "./shared/SharedStyleds"
 import Loader from "react-loader-spinner";
+import dayjs from "dayjs";
+import TodayContext from "../contexts/TodayContext";
 
 export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
     const {userData} = useContext(UserContext);
+    const {todayData, setTodayData} = useContext(TodayContext);
     const [weekdays, setWeekdays] = useState([
         {
             name: "D",
@@ -61,6 +64,9 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
         }
         createHabit(body, config)
             .then(res => {
+                if(res.data.days.includes(dayjs().$W)){
+                    setTodayData([...todayData, res.data]);
+                }
                 renderAllHabits();
                 setIsNewHabitsVisible(false);
             })
