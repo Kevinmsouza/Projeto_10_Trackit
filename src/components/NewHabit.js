@@ -46,6 +46,9 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
         setWeekdays(newList);
     }
     function saveHabit(){
+        if (weekdays.map((day, i) => day.isSelected ? i : -1).filter((index) => index >= 0 ).length === 0) {
+            return;
+        }
         setIsLoading(true);
         const body = {
             name: habitName,
