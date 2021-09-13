@@ -7,7 +7,7 @@ import Loader from "react-loader-spinner";
 import dayjs from "dayjs";
 import TodayContext from "../contexts/TodayContext";
 
-export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
+export default function NewHabit({renderAllHabits, setIsNewHabitsVisible, isNewHabitsVisible}) {
     const {userData} = useContext(UserContext);
     const {todayData, setTodayData} = useContext(TodayContext);
     const [weekdays, setWeekdays] = useState([
@@ -68,6 +68,10 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
                 if(res.data.days.includes(dayjs().$W)){
                     setTodayData([...todayData, res.data]);
                 }
+                setHabitName("");
+                setWeekdays(weekdays.map((day) => {
+                    return {...day, isSelected: false};
+                }));
                 renderAllHabits();
                 setIsNewHabitsVisible(false);
             })
@@ -82,7 +86,7 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
     }
 
     return (
-        <NewHabitSC>
+        <NewHabitSC hidden={!isNewHabitsVisible}>
             <Input
                 placeholder="nome do hábito" 
                 value={habitName} 
@@ -112,11 +116,12 @@ export default function NewHabit({renderAllHabits, setIsNewHabitsVisible}) {
 }
 
 const NewHabitSC = styled.div`
-    margin-top: 28px;
+    margin: 28px 0 10px 0;
     width: 100%;
     height: 180px;
     padding: 18px;
     background-color: #fff;
+    ${props => props.hidden ? "display: none;": ""}
 `;
 
 const ButtonsBox = styled.div`

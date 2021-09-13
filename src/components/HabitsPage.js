@@ -40,10 +40,11 @@ export default function HabitsPage() {
                     Meus hábitos
                     <PlusButton onClick={() => setIsNewHabitsVisible(true)}>+</PlusButton>
                 </HabitsBoxHeader>
-                {isNewHabitsVisible ? (<NewHabit
+                <NewHabit
                     renderAllHabits={renderAllHabits}
                     setIsNewHabitsVisible={setIsNewHabitsVisible}
-                />) : ""}
+                    isNewHabitsVisible={isNewHabitsVisible}
+                />
                 {habits.length === 0 ? (<p>
                     Você não tem nenhum hábito cadastrado ainda.
                     Adicione um hábito para começar a trackear!
