@@ -7,6 +7,7 @@ import UserContext from "./contexts/UserContext";
 import TodayPage from "./components/TodayPage";
 import HabitsPage from "./components/HabitsPage";
 import TodayContext from "./contexts/TodayContext";
+import HistoryPage from "./components/HistoryPage";
 
 export default function App() {
     const [userData, setUserData] = useState("");
@@ -27,6 +28,9 @@ export default function App() {
                         </Route>
                         <Route path="/habitos" exact>
                             <HabitsPage />
+                        </Route>
+                        <Route path="/historico" exact>
+                            <HistoryPage />
                         </Route>
                     </Switch>
                 </BrowserRouter>
