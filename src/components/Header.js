@@ -33,6 +33,7 @@ const ProfilePic = styled.img`
     width: 51px;
     height: 51px;
     background-color: #ffffff;
+    object-fit: cover;
 `
 
 const TrackitLogo = styled.h1`
