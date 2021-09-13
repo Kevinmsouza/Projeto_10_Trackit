@@ -4,13 +4,13 @@ import { HabitsBox, HabitsBoxHeader, Page } from "./shared/SharedStyleds";
 
 
 
-export default function HistoryPage () {
-    return(
+export default function HistoryPage() {
+    return (
         <Page>
             <Header />
             <HabitsBox>
                 <HabitsBoxHeader>
-                Histórico
+                    Histórico
                 </HabitsBoxHeader>
                 <p>Em breve você poderá ver o histórico dos seus hábitos aqui!</p>
             </HabitsBox>

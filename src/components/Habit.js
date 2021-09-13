@@ -11,6 +11,9 @@ export default function Habit({ habitData: { id, name, days }, renderAllHabits }
     const {todayData, setTodayData} = useContext(TodayContext);
 
     function deleteHabit(){
+        if (!window.confirm("Deseja mesmo deletar esse habito? Essa ação é irreversivel!")){
+            return;
+        }
         const config = {
             headers: {
                 Authorization: `Bearer ${userData.token}`
